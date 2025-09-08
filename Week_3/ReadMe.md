@@ -15,7 +15,8 @@ mv Listeria_monocytogenes_egd_e_gca_000196035.ASM19603v1.dna.toplevel.fa Lmono.f
 
 ### Q1: Use IGV to visualize your genome and the annotations relative to the genome.
 
-! [Overview_of_IGV](ivg_images/igvoverview.jpg)
+![Overview_of_IGV](https://github.com/coledcaron/BMMB852Work/blob/main/Week_3/igv_images/igvoverview.jpg)
+
 
 ### Q2: How big is the genome, and how many features of each type does the GFF file contain?
 ```
@@ -38,18 +39,24 @@ cat Lmono.gff | grep -E '\t(mRNA|gene)\t' > Lmono_gene.gff
 ```
 
 #### Output:
-A file containing both the mRNA and gene information for Listeria monocytes, separate from all other feature information
+A file containing both the mRNA and gene information for *Listeria monocytogenes*, separate from all other feature information
 
 ### Q4: Visualize the simplified GFF in IGV as a separate track. Compare the visualization of the originall GFF with the simplified GFF.
 
+![Multiple_Visualizations](https://github.com/coledcaron/BMMB852Work/blob/main/Week_3/igv_images/multitrackvis.jpg)
 
-
+These visualizations of the *L. monocytogenes* annotations are very similar. As most of the genome of bacteria is made of genes, many of the elements remain when only genes are present. However, some smaller segments, such as regulatory elements, are removed to provide a slightly cleaner viewing experience.
 
 ### Q5: Zoom in to see the sequences, expand the view to show the translation table in IGV. Note how the translation table needs to be displayed in the correct orientation for it to make sense.
 
-
+![IGV_Zoomed_View](https://github.com/coledcaron/BMMB852Work/blob/main/Week_3/igv_images/igvzoom.jpg)
 
 
 ### Q6: Visually verify that the first coding sequence of a gene starts with a start codon and that the last coding sequence of a gene ends with a stop codon.
 
+Start Codon:
+![Example_Gene_Start_Codon](https://github.com/coledcaron/BMMB852Work/blob/main/Week_3/igv_images/lmo560start.jpg)
+Stop Codon:
+![Example_Gene_Stop_Codon](https://github.com/coledcaron/BMMB852Work/blob/main/Week_3/igv_images/lmo560end.jpg)
 
+A start and stop codon are both present in lmo 560 in the *L. monocytogenes* genome.
