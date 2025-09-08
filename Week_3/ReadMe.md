@@ -15,6 +15,8 @@ mv Listeria_monocytogenes_egd_e_gca_000196035.ASM19603v1.dna.toplevel.fa Lmono.f
 
 ### Q1: Use IGV to visualize your genome and the annotations relative to the genome.
 
+! [Overview_of_IGV](ivg_images/igvoverview.jpg)
+
 ### Q2: How big is the genome, and how many features of each type does the GFF file contain?
 ```
 seqkit stats Lmono.fa
