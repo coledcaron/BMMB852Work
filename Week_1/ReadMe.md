@@ -5,10 +5,11 @@
 ``` samtools --version ```
 
 ### Output:
+```
 samtools 1.22.1 <br>
 Using htslib 1.22.1 <br>
 Copyright (C) 2025 Genome Research Ltd.
-
+```
 ## Q: Show commands needed to create a nested directory structure.
 
 ```
