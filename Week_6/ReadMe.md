@@ -16,25 +16,25 @@ A makefile is provided with this assignment. The use of this makefile is to crea
 
 #### get_genome
 ```
-get_genome (genome)
+get_genome genome=(NCBI genome accession number)
 ```
 Using a provided NCBI genome accession number, downloads the ```.fasta``` and ```.gff``` file for the associated accession number, unzips the file, and moves these files to the current directory for ease of use with a name containing the accession number.
 
 #### get_fastq
 ```
-get_fastq (fastq) (genome_size) (coverage) (read_length)
+get_fastq fastq=(SRA accession number) genome_size=(genome size in base pairs) coverage=(number of reads per base pair) read_length=(length of a read in your desired SRA accession)
 ```
 After being provided the genome size, desired coverage, and length of a read, downloads a set number of reads from a provided SRA accession number, provides a list of basic statistics, and runs FASTQC to assess the quality of the reads.
 
 #### index
 ```
-index (genome)
+index genome=(NCBI genome accession number)
 ```
 Grabs the provided ```.fasta``` file and creates bwa indexes for use during alignment.
 
 #### align
 ```
-align (fastq)
+align fastq=(SRA accession number)
 ```
 Aligns the targeted ```.fastq``` file to the indexes within the work file to generate a ```.bam``` file alignment for visualization. Basic statistics are also calculated to determine the quality of the alignment.
 
