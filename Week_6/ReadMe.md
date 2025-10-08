@@ -48,7 +48,7 @@ make get_genome genome=GCF_000848505.1
 
 #### 2. Download a number of reads to get 10x genome coverage of reads from an assoicated SRR accession file
 ```
-make get_fastq genome_size=18959 coverage=10 read_length=202 fastq=SRR1972976
+make get_fastq genome_size=18959 coverage=10 read_length=202 fastq=SRR1553500
 ```
 
 #### 3. Index the genome
@@ -58,7 +58,7 @@ make index genome=GCF_000848505.1
 
 #### 4. Align the Fastq file to the index to generate a bam file
 ```
-make align fastq=SRR1972976
+make align fastq=SRR1553500
 ```
 
 #### 5. Alignment of the .bam file to the Zaire Ebolavirus genome using IGV
