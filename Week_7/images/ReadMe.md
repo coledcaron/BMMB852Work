@@ -1,1 +1,1 @@
-
+These images are stored here for use in the Week_7 ReadMe file to show images of IGV visualizations of ```bam``` and ```bigwig``` files for RNA-seq data taken from both Illumina and Nanopore instruments.
