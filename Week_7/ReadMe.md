@@ -212,10 +212,44 @@ The Illumina RNA-seq has 1,876 primary alignments, while the Nanopore RNA-seq ha
 
 
 ### What coordinate has the largest observed coverage?
+
+Running the ```make align``` function of the program also produces a file listing the top twenty sites with the most coverage. 
+
+For the Illumina RNA-seq data, the point with the most coverage is:
 ```
-samtools depth your.bam | sort -k3,3nr | head -n 1
+NC_002549.1	12187	25
 ```
+This point falls near the beginning of protein L, which is the RNA-dependent RNA polymerase endcoded by Zaire Ebolavirus. This would make sense, as this region would want to be the most readily transcribed to make more polymerase to create more copies of the genome within its host, accelerating propagation.
+
+For the Nanopore RNA-seq data, the points with the most coverage are:
+```
+NC_002549.1	9278	28
+NC_002549.1	9279	28
+NC_002549.1	9280	28
+NC_002549.1	9281	28
+NC_002549.1	9282	28
+NC_002549.1	9283	28
+NC_002549.1	9288	28
+NC_002549.1	9289	28
+NC_002549.1	9290	28
+NC_002549.1	9291	28
+NC_002549.1	9292	28
+NC_002549.1	9294	28
+NC_002549.1	9295	28
+NC_002549.1	9296	28
+NC_002549.1	9297	28
+```
+This region from 9278-9297 falls at the end of VP30, the transcription activator protien that helps initiate transcription / replication of the Zaire Ebolavirus genome.
+
 ### Select a gene of interest. How many alignments on a forward strand cover the gene?
 
+For this, I decided to use the L protein gene, which is the RNA-depended RNA polymerase, as my gene of interest for this question.
 
+```
+samtools view -F 16 -c ZEBV_illumina/alignments/ZEBV_illumina_aligned_sorted.bam NC_002549.1:11501-18283
+samtools view -F 16 -c ZEBV_nanopore/alignments/ZEBV_nanopore_aligned_sorted.bam NC_002549.1:11501-18283
+```
 
+The above commands take a ```bam``` file, filter it using the ```16``` flag, which marks strands as forward or reverse sequences, and counted all the entries between the 11501st and 18283rd base pairs in Zaire Ebolavirus, which correspond to the L protein sequence region.
+
+When the following lines of code were ran, it returned that there were 429 aligning forward reads in the Illumina RNA-seq run, while there were 21 aligning forward reads in the Nanopore RNA-seq run. 
