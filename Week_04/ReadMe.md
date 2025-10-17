@@ -14,7 +14,7 @@ mv ncbi_dataset/data/GCF_000848505.1/genomic.gff ebola_1976.gff
 ```
 This code is used to set up the environment, create a folder to store all the files associated with this analysis, and download the necessary FASTA and GFF files for this analysis. These files were also renamed for easier reference in future code.
 ### IGV Visualization of the Ebola Genome:
-![IGV Visualization of the 1976 Zaire Ebola Genome](https://github.com/coledcaron/BMMB852Work/blob/main/Week_4/IGV_Screenshots/Ebola_IGV_Vis.jpg)
+![IGV Visualization of the 1976 Zaire Ebola Genome](https://github.com/coledcaron/BMMB852Work/blob/main/Week_04/IGV_Screenshots/Ebola_IGV_Vis.jpg)
 The annotations associated with zaire ebola virus were aligned to the genome sequence to visualize this dense assortment of features. 
 ### Question: How big is the Ebola genome, and how many features are there?
 Length: <br>
@@ -72,7 +72,7 @@ To see how much of the genome is covered by coding sequences, we first need to m
 cat ebola_1976.gff | grep "\tCDS\t" > ebola_cds.gff
 ```
 The resulting file could then be uploaded to IGV, showing the following:
-![Coverage of Ebola CDS across the Genome](https://github.com/coledcaron/BMMB852Work/blob/main/Week_4/IGV_Screenshots/Ebola_IGV_CDScoverage.jpg)
+![Coverage of Ebola CDS across the Genome](https://github.com/coledcaron/BMMB852Work/blob/main/Week_04/IGV_Screenshots/Ebola_IGV_CDScoverage.jpg)
 Overall, the coverage of coding sequence accross the genome is pretty good, with only small gaps for regulatory and promoter sequences. The zaire ebola genome appears to be approximately 75% covered with coding sequences.
 
 ### Question: What other genome builds for zaire ebola virus are available, and what could they be used for?
