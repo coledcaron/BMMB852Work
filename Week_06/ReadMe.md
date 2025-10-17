@@ -63,7 +63,7 @@ make align fastq=SRR1553500
 
 #### 5. Alignment of the .bam file to the Zaire Ebolavirus genome using IGV
 
-![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_6/bam_igv_alignment.jpg)
+![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_06/bam_igv_alignment.jpg)
 
 
 ### Question: What percentage of reads aligned to the genome?
