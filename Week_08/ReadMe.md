@@ -1,9 +1,9 @@
-# Week 7 Homework Assignment
+# Week 8 Homework Assignment
 
 ## Set up:
 ```
-mkdir week7data
-cd week7data
+mkdir week8data
+cd week8data
 conda activate bioinfo
 ```
 
@@ -88,7 +88,7 @@ make all genome=GCF_000848505.1 fastq=SRR1553500 genome_size=18959 coverage=10 r
 
 #### 2. Visualize the bam file and bigwig file in on the Zaire Ebolavirus genome using IGV
 
-![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/illumina_fastq_vis.jpg)
+![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/Illumina_fastq_vis.jpg)
 
 ---------------------------------
 
@@ -121,18 +121,39 @@ make bigwig sample=ZEBV
 
 #### 6. Alignment of the .bam file to the Zaire Ebolavirus genome using IGV
 
-![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/illumina_fastq_vis.jpg)
+![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/Illumina_fastq_vis.jpg)
 
 ----------------------------
 
-## Multiple Fastq Alignment and Visualization
+## Multiple Fastq Alignment
 
+When aligning multiple ```fastq``` to a provided genomes, this process can be expedited with the use of ```GNU parallel``` to take a reference file and use this as the inputs for the Makefile. The steps to do this are as follows:
 
+### 1. Create a CSV File With Sample Data (Example)
+
+Create a CSV file that contains all of the variables that need to be changed. For this example, both the genome (labeled run_accession) and the sample alias need to be changed for each sample. An example of the layout is provided below.
 
 ```
-make get_genome index
+run_accession,sample_alias
+SRR1972855,G5295.1
 ```
+
+If other inputs, such as read length or genome size, are variable from the defaults, the CSV file should also include columns for these values.
+
+### 2. Set the Genome and Indexes
+
+```
+make get_genome index genome=GCF_000848505.1 output_dir=ZEBV_analysis
+```
+
+Since the same reference genome will be used to align each sample, this only needs to be downloaded once for the whole analysis. These files are referenced by all samples during alignment, so they only need to be generated once.
+
+### 3. Use GNU Parallel to Initiate Multi-Sample Alignment to the genome
 
 ```
 cat design.csv | parallel --colsep , --header : -j 6 make get_fastq align bigwig fastq={run_accession} sample={sample_alias}
 ```
+
+This command takes a design file and provides it to ```parallel``` to run 6 jobs simultaneously. The column separator and header both need to be defined, along with the number of concurrent jobs. 
+
+Since a genome index has already been created for the samples, that leaves only fastq acquisition, alignment, and bigwig creation as steps that need to be done to each sample. Finally, the columns in the spreadsheet need to be assigned to their respective variables in the Makefile.
