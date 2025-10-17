@@ -88,7 +88,7 @@ make all genome=GCF_000848505.1 fastq=SRR1553500 genome_size=18959 coverage=10 r
 
 #### 2. Visualize the bam file and bigwig file in on the Zaire Ebolavirus genome using IGV
 
-![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/illumina_fastq_vis.jpg)
+![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/Illumina_fastq_vis.jpg)
 
 ---------------------------------
 
@@ -121,7 +121,7 @@ make bigwig sample=ZEBV
 
 #### 6. Alignment of the .bam file to the Zaire Ebolavirus genome using IGV
 
-![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/illumina_fastq_vis.jpg)
+![Zaire Ebolavirus IGV Alignment Overview](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/Illumina_fastq_vis.jpg)
 
 ----------------------------
 
@@ -135,7 +135,7 @@ make bigwig sample=ZEBV
 make all genome=GCF_000848505.1 fastq=SRR1553500 genome_size=18959 coverage=10 read_length=202 sample=ZEBV_illumina
 ```
 
-![Illumina RNA-seq BAM and BigWig Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/illumina_fastq_vis.jpg)
+![Illumina RNA-seq BAM and BigWig Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/Illumina_fastq_vis.jpg)
 
 #### Nanopore RNA-seq Visualization
 
@@ -143,11 +143,11 @@ make all genome=GCF_000848505.1 fastq=SRR1553500 genome_size=18959 coverage=10 r
 make all genome=GCF_000848505.1 fastq=SRR8959866 genome_size=18959 coverage=10 read_length=630 sample=ZEBV_nanopore
 ```
 
-![Nanopore RNA-seq BAM and BigWig Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/nanopore_fastq_vis.jpg)
+![Nanopore RNA-seq BAM and BigWig Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/nanopore_fastq_vis.jpg)
 
 #### Combined Illumina and Nanopore Visualization
 
-![Nanopore and Illumina RNA-seq Direct Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_7/images/Illumina_and_Nanopore_IGV_Visualization.jpg)
+![Nanopore and Illumina RNA-seq Direct Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_07/images/Illumina_and_Nanopore_IGV_Visualization.jpg)
 
 
 ### Briefly describe the differences between the alignment in both files.
