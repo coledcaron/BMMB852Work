@@ -17,65 +17,6 @@ A makefile is provided with this assignment. The use of this makefile is to crea
 
 --------------------------------
 
-## Makefile Options:
-
-### help
-
-```
-make help
-```
-
-Provides in-terminal functions and usage for each option within the makefile.
-
-### all
-
-```
-make all genome=<GCF_accession> fastq=<SRA_accession> genome_size=<genome_size_in_bp> coverage=<desired_coverage> read_length=<read_length_in_bp> sample=<sample_name> output_dir=<output_directory>
-```
-
-Runs each option within the makefile, starting from downloading the needed ```fasta``` and ```fastq``` files and ending with aligning the collected reads to the genome to create a ```bam``` file and a ```bigwig``` file.
-
-### get_genome
-
-```
-make get_genome genome=<GCF_accession> sample=<sample_name> output_dir=<output_directory>
-```
-
-Using a provided NCBI genome accession number, downloads the ```.fasta``` and ```.gff``` file for the associated accession number, unzips the file, and moves these files to an alignment folder, renamed to a supplied sample name.
-
-### get_fastq
-
-```
-make get_fastq fastq=<SRA_accession> genome_size=<genome_size_in_bp> coverage=<desired_coverage> read_length=<read_length_in_bp> sample=<sample_name> output_dir=<output_directory>
-```
-
-After being provided the genome size, desired coverage, and length of a read, downloads a set number of reads from a provided ```fastq``` SRA accession number, provides a list of basic statistics, and runs FASTQC to assess the quality of the reads. All items are placed in the reads directory.
-
-### index
-
-```
-make index sample=<sample_name> output_dir=<output_directory>
-```
-
-Finds the ```fasta``` file bearing the sample name and creates an index using ```bwa``` indexing, and places them in an index directory.
-
-### align
-
-```
-make align fastq=<SRA_accession> sample=<sample_name> output_dir=<output_directory>
-```
-
-Aligns the targeted ```.fastq``` file to the indexes within the work file to generate a ```.bam``` file alignment for visualization and adds them to an alignments directory. Basic statistics are also calculated to determine the quality of the alignment.
-
-### bigwig
-
-```
-make bigwig sample=<sample_name>
-```
-
-Finds the named ```bam``` file and converts it into a ```bigwig``` file, placed in the alignments folder.
-
-------------------------------
 
 ## bam File Visualization for Zaire Ebolavirus (example)
 
@@ -125,7 +66,7 @@ make bigwig sample=ZEBV
 
 ----------------------------
 
-## Multiple Fastq Alignment
+## Multiple Sample Alignment
 
 When aligning multiple ```fastq``` to a provided genomes, this process can be expedited with the use of ```GNU parallel``` to take a reference file and use this as the inputs for the Makefile. The steps to do this are as follows:
 
