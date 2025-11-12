@@ -9,6 +9,8 @@ A makefile is provided with this assignment. The use of this makefile is to crea
 
 ## bam File Visualization for Zaire Ebolavirus (example)
 
+### Requirement: Please start and run IGV on your device before running any code from the Makefile. Certain commands in the makefile look to have IGV open to receive commands. If IGV is not open, the code will fail to initialize and return an error to open IGV.
+
 ### Option 1: Use the all option to run everything in one command
 
 ####  Run the all function with each variable set
