@@ -63,30 +63,60 @@ This code runs the remaining step to merge each ```.bam``` file into a single co
 
 Above are two examples of the IGV Visualization from one of the samples (HBR_1) analyzed. To confirm that this data is RNA-seq data, reads from the ```.fastq``` files should best align to exons within the genome sequence. In both of the two above examples, sequence alignments are most contained to exonic regions, with minimal alignments to regions outside of exons. Therefore, this confirms that the input data analyzed is RNA-seq data.
 
-### Count Matrix Discussion
+### RNA-seq Results
 
-From the count matrix, I found a few genes of interest that have similar read counts relative to their overall library depth. Some of these genes are listed below:
+Using the generated counts matrix, differential expression for each gene was calculated. The resulting differential expression analysis was used as a baseline to generate a heatmap, PCA, and functional analysis for the differentially expressed genes.
+
+#### Differentially Expressed Genes
+
+Differential expression was determined using the ```edger``` package. This program removes genes with low read counts, compares the read counts for each gene for changes in expression, and runs statistical analysis to determine significance.
 
 ```
-name	gene	HBR_1	HBR_2	HBR_3	UHR_1	UHR_2	UHR_3
-ENSG00000177663.13	IL17RA	60	66	62	102	73	93
-ENSG00000070371.15	CLTCL1	39	45	38	118	67	88
-ENSG00000099942.12	CRKL	353	429	374	776	490	636
-ENSG00000185651.14	UBE2L3	218	256	203	527	333	376
+# Input: 1371 rows
+# Removed: 1004 rows
+# Fitted: 367 rows
+# Significant PVal:  299 ( 81.50 %)
+# Significant FDRs:  291 ( 79.30 %)
 ```
 
-![IL17RA IGV Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_13/igv_images/IL17RA.jpg)
+Of the 1,371 input genes, only 26.8% of genes met the threshold to be included in analysis. Of the 367 genes that passed initial fitting, 299 genes exhibit significant p-values and 291 genes exhibit significant false discovery rates. Therefore, about 20% of genes exhibit significant differential expression from the initial input.
 
-IL17RA shows a fair bit of noise within the sequence alignment due to the low read count associated within this gene. It is also surprising that the maximum reads are relatively low across the gene, despite reads for this gene being reported to be above 60 reads. Looking at genes with higher reads may remove some of this noise and discrepancy.
+#### Heatmap
 
-![CLTCL1 IGV Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_13/igv_images/CLTCL1.jpg)
+![Heatmap of differentially expressed genes](https://github.com/coledcaron/BMMB852Work/blob/main/Week_14/images/Heatmap.jpg)
 
-CLTCL1 follows a similar trend, with a low read count resulting in a lot of visual noise in IGV. The highly fragmented exons of this gene makes IGV visualization more difficult as well.
+This heatmap of the differentially expressed genes in HBR and UHR shows that there are strong differences in the expression profiles for each tissue type. Very few genes in this analysis show signs of mixed expression between the tissue types, with highly consistent expression across all replicates.
 
-![CRKL IGV Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_13/igv_images/CRKL.jpg)
+#### Principal Component Analysis
 
-CRKL has a high overall read count, which can be seen clearly in the IGV visualization. While there is some intermediate background noise, this gene forms three distinct exon regions that closely align to the exons in the known gene. This is a clear example that this is RNA-seq data.
+![PCA plot of differentially expressed genes](https://github.com/coledcaron/BMMB852Work/blob/main/Week_14/images/PCA.jpg)
 
-![UBE2L3 IGV Visualization](https://github.com/coledcaron/BMMB852Work/blob/main/Week_13/igv_images/UBE2L3.jpg)
+This principal component analysis shows that these two tissue types are very polarized from each other. Most of the variance between samples is described by the first principal component, which wholly separates the HBR and UHR samples. This analysis shows that these two tissue types are very dissimilar from each other, with no overlap associated with the two groups.
 
-UBE2L3 also has a strong read count, and contains three exon regions with high read counts, with a little background reads throughout the whole sequence.
+#### Functional Analysis
+
+```
+# Found 366 functions
+```
+
+When looking through the genes for functional enrichment analysis, 366 enriched phenotypes were found from the two tissue types. The top 15 functions were taken from that output and placed below.
+
+```
+cellular response to nutrient levels
+regulation of single stranded viral RNA replication via double stranded DNA intermediate
+DNA cytosine deamination
+transport
+single stranded viral RNA replication via double stranded DNA intermediate
+protein targeting to mitochondrion
+DNA deamination
+cellular response to starvation
+viral RNA genome replication
+establishment of localization
+response to starvation
+localization
+negative regulation of single stranded viral RNA replication via double stranded DNA intermediate
+macromolecule localization
+cytidine to uridine editing
+```
+
+Of these highest enriched functions, many of these functions are related to viral RNA, such as viral RNA replication and cytidine to uridine editing. A few of the functions are related to cell survival, such as cellular response to nutrient levels, transport, cellular response to starvation, and response to starvation. These functions would be congruent with cancer cell lines, which would be altering survival gene expression to improve tumor survival. Finally, a few functions are linked to broad processes, such as transport, localization, and macromolecule localization. As these are broad categories, it is hard to say what may be causing these functions to be enriched.
